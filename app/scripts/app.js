@@ -4,14 +4,13 @@ require('pointfree-fantasy').expose(window);
 var Future = require('data.future');
 var Maybe = require('data.maybe');
 var R = require('ramda');
+var behaviorAlgebras = require('./behavior');
 
 // -- Behavior ---------------------
 
 var behavior = Behavior(R.add(1));
 console.log(behavior.ap(Behavior(2)));
-
-var id = Behavior((value) => value);
-console.log(id.ap(Behavior(5)));
+console.log(behavior.ap(Maybe.Just(7)));
 
 var b3 = Behavior(3);
 var b4 = Behavior(4);
@@ -20,6 +19,7 @@ var log = R.curry((a, b) => console.log(a, b));
 liftA2(log, b3, b4)
 console.log(liftA2(R.add, b3, b4));
 
+behaviorAlgebras();
 
 // -- Random ---------------------
 
