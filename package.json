@@ -1,0 +1,21 @@
+{
+  "name": "fun-with-frp",
+  "version": "0.1.0",
+  "description": "FRP in action",
+  "private": true,
+  "author": {
+    "name": "Peter Vilja",
+    "email": "peter.vilja@gmail.com"
+  },
+  "license": "MIT",
+  "engines": ">=0.10",
+  "scripts": {
+    "preinstall": "(npm list browserify -g || npm install browserify -g) && (npm list 6to5 -g || npm install 6to5 -g)"
+  },
+  "dependencies": {
+    "data.future": "^2.3.0",
+    "data.maybe": "^1.2.0",
+    "pointfree-fantasy": "^0.1.1"
+  },
+  "devDependencies": {}
+}
