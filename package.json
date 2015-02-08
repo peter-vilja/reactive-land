@@ -10,12 +10,15 @@
   "license": "MIT",
   "engines": ">=0.10",
   "scripts": {
-    "preinstall": "(npm list browserify -g || npm install browserify -g) && (npm list 6to5 -g || npm install 6to5 -g)"
+    "preinstall": "npm list browserify -g || npm install browserify -g"
   },
   "dependencies": {
     "data.future": "^2.3.0",
     "data.maybe": "^1.2.0",
-    "pointfree-fantasy": "^0.1.1"
+    "pointfree-fantasy": "^0.1.1",
+    "ramda": "^0.9.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "6to5ify": "^4.1.0"
+  }
 }

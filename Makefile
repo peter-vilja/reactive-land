@@ -1,24 +1,24 @@
-all: clean scripts copy browserify
+all: clean copy scripts
 
 clean:
 	rm -rf dist
 
 scripts:
-	6to5 app/scripts --out-dir dist/scripts
-
-browserify:
-	browserify dist/scripts/app.js -o dist/scripts/main.js
+	mkdir dist/scripts
+	browserify app/scripts/app.js -t 6to5ify --outfile dist/scripts/main.js
 
 css:
-	mkdir dist/styles | app/node_modules/node-sass/bin/node-sass --output-style compressed app/styles/app.scss dist/styles/app.css
+	mkdir dist/styles
+	app/node_modules/node-sass/bin/node-sass --output-style compressed app/styles/app.scss dist/styles/app.css
 
 prefix:
 	app/node_modules/autoprefixer/bin/autoprefixer -b "last 2 Chrome versions" dist/styles/*.css
 
 copy:
-	cp -r node_modules dist/node_modules | cp app/*.html dist
+	mkdir dist
+	cp app/index.html dist
 
 watch:
 	fswatch -L node_modules/reactive -0 app node_modules | xargs -0 -n 1 -I {} make
 
-.PHONY: all clean scripts css
+.PHONY: all clean copy scripts css
