@@ -12,10 +12,7 @@ import {diff, patch, h, create} from 'virtual-dom';
 
 var log = x => { console.log(x); return x; };
 
-let render = amount => {
-  return h('div', String(amount));
-};
-
+let render = amount => h('div', String(amount));
 let tree = render(0);
 let rootNode = create(tree);
 document.body.appendChild(rootNode);
