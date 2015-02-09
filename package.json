@@ -19,6 +19,7 @@
     "ramda": "^0.9.1"
   },
   "devDependencies": {
-    "6to5ify": "^4.1.0"
+    "6to5ify": "^4.1.0",
+    "node-sass": "^2.0.0-beta"
   }
 }

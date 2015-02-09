@@ -9,10 +9,10 @@ scripts:
 
 css:
 	mkdir dist/styles
-	app/node_modules/node-sass/bin/node-sass --output-style compressed app/styles/app.scss dist/styles/app.css
+	node_modules/node-sass/bin/node-sass --output-style compressed app/styles/app.scss dist/styles/app.css
 
 prefix:
-	app/node_modules/autoprefixer/bin/autoprefixer -b "last 2 Chrome versions" dist/styles/*.css
+	node_modules/autoprefixer/bin/autoprefixer -b "last 2 Chrome versions" dist/styles/*.css
 
 copy:
 	mkdir dist
