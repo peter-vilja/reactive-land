@@ -7,7 +7,7 @@ import Maybe from 'data.maybe';
 import _ from 'ramda';
 import {EventStream, Behavior} from 'reactive';
 
-var fetch = (path) => EventStream.fromEventSource(new EventSource(path));
+var fetch = path => EventStream.fromEventSource(new EventSource(path));
 var tweets = fetch('/api/tweets');
 
 tweets
