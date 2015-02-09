@@ -19,6 +19,8 @@ tweets
     console.log('amount', amount);
   });
 
-tweets
-  .filter(compose(is(Object), get('geo')))
-  .subscribe(log);
+var withGeo = tweets.filter(compose(is(Object), get('geo')));
+var WithTag = tweets
+  .filter(get('entities'))
+  .map(compose(map(compose(toLower, get('text'))), get('hashtags'), get('entities')))
+  .filter(compose(lt(-1), indexOf('love')));
