@@ -11,11 +11,13 @@ import {EventStream, Behavior} from 'reactive';
 import {diff, patch, h, create} from 'virtual-dom';
 
 var log = x => { console.log(x); return x; };
+var select = x => document.querySelector(x);
 
-let render = amount => h('div', String(amount));
+let render = amount => h('div', {className: 'tweet-count'}, String(amount));
+
 let tree = render(0);
 let rootNode = create(tree);
-document.body.appendChild(rootNode);
+select('.metrics').insertBefore(rootNode, select('.metrics').firstChild);
 
 var fetch = path => EventStream.fromEventSource(new EventSource(path));
 var tweets = fetch('/api/tweets').map(compose(JSON.parse, get('data')));

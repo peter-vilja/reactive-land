@@ -1,4 +1,4 @@
-all: clean copy scripts
+all: clean copy scripts css
 
 clean:
 	rm -rf dist
@@ -9,13 +9,14 @@ scripts:
 
 css:
 	mkdir dist/styles
-	node_modules/node-sass/bin/node-sass --output-style compressed app/styles/app.scss dist/styles/app.css
+	node_modules/node-sass/bin/node-sass --output-style compressed app/styles/main.scss dist/styles/main.css
 
 prefix:
 	node_modules/autoprefixer/bin/autoprefixer -b "last 2 Chrome versions" dist/styles/*.css
 
 copy:
 	mkdir dist
+	cp -R app/images dist
 	cp app/index.html dist
 
 watch:

@@ -1,0 +1,99 @@
+.row {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  flex-flow: column;
+  @media (min-width: 48em) {
+    flex-flow: row wrap;
+  }
+}
+
+.row-reversed {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  flex-flow: column;
+  flex-direction: column;
+  @media (min-width: 48em) {
+    flex-flow: row wrap;
+    flex-direction: row-reverse;
+  }
+}
+
+.row-center {
+  align-items: center;
+}
+
+.column {
+  @media (min-width: 48em) {
+    flex: 1;
+  }
+}
+
+.column-center {
+  display: flex;
+  justify-content: center;
+}
+
+.column-4-5 {
+  @extend .column;
+  @media (min-width: 48em) {
+    flex: 0 0 80%;
+  }
+}
+
+.column-2-3 {
+  @extend .column;
+  @media (min-width: 48em) {
+    flex: 0 0 60%;
+  }
+}
+
+.column-1-2 {
+  @extend .column;
+  @media (min-width: 48em) {
+    flex: 0 0 50%;
+  }
+}
+
+.column-2-5 {
+  @extend .column;
+  @media (min-width: 48em) {
+    flex: 0 0 40%;
+  }
+}
+
+.column-1-3 {
+  @extend .column;
+  @media (min-width: 48em) {
+    flex: 0 0 33.3333%;
+  }
+}
+
+.column-1-4 {
+  @extend .column;
+  @media (min-width: 48em) {
+    flex: 0 0 25%;
+  }
+}
+
+.column-1-5 {
+  @extend .column;
+  @media (min-width: 48em) {
+    flex: 0 0 20%;
+  }
+}
+
+.column-1-6 {
+  @extend .column;
+  @media (min-width: 48em) {
+    flex: 0 0 16.66666666667%;
+  }
+}
+
+.column-1-8 {
+  @extend .column;
+  @media (min-width: 48em) {
+    flex: 0 0 12.5%;
+  }
+}

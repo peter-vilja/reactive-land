@@ -1,0 +1,37 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+%reset {
+  margin: 0;
+  padding: 0;
+}
+
+%center {
+  justify-content: center;
+  align-items: center;
+}
+
+%clearfix {
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin bp($point) {
+  @if $point == desktop {
+    @media (min-width: 1600px) { @content; }
+  }
+  @else if $point == tablet {
+    @media (min-width: 48em) { @content; }
+  }
+  @else if $point == phone {
+    @media (min-width: 24em) { @content; }
+  }
+}
