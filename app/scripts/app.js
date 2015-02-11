@@ -29,7 +29,7 @@ tweets
     tree = newTree;
   });
 
-var withGeo = tweets.filter(compose(is(Object), get('geo')));
+var withCoordinates = tweets.filter(compose(is(Object), get('coordinates')));
 var WithTag = tweets
   .filter(get('entities'))
   .map(compose(map(compose(toLower, get('text'))), get('hashtags'), get('entities')))
