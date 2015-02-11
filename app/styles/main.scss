@@ -45,6 +45,7 @@ body {
     padding: 2em;
   }
 
+  /* Browser rendering performance killer
   &::before {
     content: '';
     background-image: url('/images/mountain.jpeg');
@@ -56,7 +57,7 @@ body {
     width: 100%;
     background-size: cover;
     opacity: 0.3;
-  }
+  }*/
 }
 
 .metrics {
