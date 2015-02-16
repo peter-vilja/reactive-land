@@ -13,11 +13,17 @@ import {diff, patch, h, create} from 'virtual-dom';
 var log = x => { console.log(x); return x; };
 var select = x => document.querySelector(x);
 
-let render = amount => h('div', {className: 'tweet-count'}, String(amount));
+let counter = amount => h('div', {className: 'tweet-count'}, String(amount));
 
-let tree = render(0);
-let rootNode = create(tree);
+let initial = counter(0);
+let rootNode = create(initial);
 select('.metrics').insertBefore(rootNode, select('.metrics').firstChild);
+
+let render = Behavior.of(initial);
+
+render.bufferWithCount(2).subscribe(([old, updated]) => {
+  patch(rootNode, diff(old, updated));
+});
 
 var fetch = path => EventStream.fromEventSource(new EventSource(path));
 var tweets = fetch('/api/tweets').map(compose(JSON.parse, get('data')));
@@ -25,10 +31,7 @@ var tweets = fetch('/api/tweets').map(compose(JSON.parse, get('data')));
 tweets
   .scan((a, b) => a + 1, 0)
   .subscribe((amount) => {
-    var newTree = render(amount);
-    var patches = diff(tree, newTree);
-    rootNode = patch(rootNode, patches);
-    tree = newTree;
+    render.next(counter(amount))
   });
 
 var withCoordinates = tweets.filter(compose(is(Object), get('coordinates')));
