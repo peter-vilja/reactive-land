@@ -5,7 +5,7 @@ clean:
 
 scripts:
 	mkdir dist/scripts
-	browserify app/scripts/app.js -t 6to5ify --outfile dist/scripts/main.js
+	browserify app/scripts/app.js -t babelify --outfile dist/scripts/main.js
 
 css:
 	mkdir dist/styles
