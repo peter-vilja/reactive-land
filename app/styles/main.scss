@@ -30,14 +30,21 @@ body {
 
 @import "grid";
 
-.grid {
+div[role="main"] {
   background: #43464F;
+  width: 85%;
+  box-shadow: 2px 5px 10px rgba(#000, .2);
+}
+
+.map {
+  height: 500px;
+}
+
+.grid {
   position: relative;
   border-radius: 5px;
-  height: 80%;
-  width: 85%;
   color: #fafafa;
-  box-shadow: 2px 5px 10px rgba(#000, .2);
+  height: 500px;
   .row {
     height: 50%;
   }
