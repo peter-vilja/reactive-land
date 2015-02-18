@@ -1,0 +1,13 @@
+.feeling {
+  height: 100%;
+  .hashtags {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    list-style: none;
+
+    li {
+      position: absolute;
+    }
+  }
+}
