@@ -45,7 +45,7 @@ var WithTag = tweets
 let keywords = fetch('/api/keywords').map(compose(JSON.parse, get('data')));
 
 let feeling = () => {
-  let colors = ['#f05032', '#f79727', '#fec325', '#54b847', '#b319ab', '#00539e', '#0078c1'];
+  let colors = ['#8f9c7f', '#f07429', '#f1d78d', '#cd9fc3', '#cccbad', '#e15524', '#699eb8'];
   let rand = (max, min) => Math.floor(Math.random() * (max - min + 1) + min);
   let li = text => h('li', {
     style: {
