@@ -39,10 +39,13 @@ var WithTag = tweets
   .map(compose(map(compose(toLower, get('text'))), get('hashtags'), get('entities')))
   .filter(compose(lt(-1), indexOf('love')));
 
+
+//-- Keywords --------------------
+
 let keywords = fetch('/api/keywords').map(compose(JSON.parse, get('data')));
 
 let feeling = () => {
-  let colors = ['#f05032', '#f79727', '#fec325', '#54b847', '#b319ab', '#692c90', '#00539e', '#0078c1'];
+  let colors = ['#f05032', '#f79727', '#fec325', '#54b847', '#b319ab', '#00539e', '#0078c1'];
   let rand = (max, min) => Math.floor(Math.random() * (max - min + 1) + min);
   let li = text => h('li', {
     style: {
@@ -52,7 +55,28 @@ let feeling = () => {
       color: colors[rand(0, 7)]
     }
   }, text);
-  let renderFeeling = R.compose(unshift('.hashtags'), create, li);
+  let lis = [];
+
+  let ul = li => h('ul', {className: 'hashtags'}, li);
+  let tree = ul(lis);
+  let tags = create(tree);
+  unshift('.feeling', tags);
+
+  let add = item => {
+    var list = take(29, lis);
+    list.unshift(item);
+    lis = list;
+    return list;
+  };
+
+  let update = updated => {
+    var newTree = ul(updated);
+    var patches = diff(tree, newTree);
+    patch(tags, patches);
+    tree = newTree;
+  };
+
+  let renderFeeling = R.compose(update, add, li);
 
   let filterByKeyword = R.curry((stream, keyword) => stream.filter(R.compose(lt(-1), strIndexOf(keyword), toLower, get('text'))));
   let filter = filterByKeyword(keywords);
