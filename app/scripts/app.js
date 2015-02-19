@@ -25,9 +25,9 @@ render.bufferWithCount(2).subscribe(([old, updated]) => {
 
 var tweets = fetch('/api/tweets').map(compose(JSON.parse, get('data')));
 
-// tweets
-//   .scan((a, b) => a + 1, 0)
-//   .subscribe(compose(render.next.bind(render), counter));
+tweets
+  .scan((a, b) => a + 1, 0)
+  .subscribe(compose(render.next.bind(render), counter));
 
 var mapWidth = 855.546875;
 var mapHeight = 432.828125;
