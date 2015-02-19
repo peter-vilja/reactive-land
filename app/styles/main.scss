@@ -38,8 +38,16 @@ div[role="main"] {
   box-shadow: 2px 5px 10px rgba(#000, .2);
 }
 
-.map {
-  height: 500px;
+.map-container {
+  position: relative;
+  margin: 0 auto;
+}
+
+.dot {
+  position: absolute;
+  height: 2px;
+  width: 2px;
+  background: red;
 }
 
 .grid {
