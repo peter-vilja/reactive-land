@@ -10,6 +10,7 @@ import {diff, patch, h, create} from 'virtual-dom';
 import {fetch, log, select, unshift} from './general';
 // import './keywords';
 import './top';
+import locate from './map';
 
 let counter = amount => h('div', {className: 'tweet-count'}, String(amount));
 
@@ -29,21 +30,4 @@ tweets
   .scan((a, b) => a + 1, 0)
   .subscribe(compose(render.next.bind(render), counter));
 
-var mapWidth = 855.546875;
-var mapHeight = 432.828125;
-var x = longitude => Math.round((longitude + 180) * (mapWidth / 360));
-var y = latitude => Math.round(((-1 * latitude) + 90) * (mapHeight / 180));
-
-var dot = (lon, lat) => create(h('span', {
-  className: 'dot',
-  style: {
-    left: x(lon)-2+'px',
-    top: y(lat)-2+'px',
-  }
-}));
-
-var withCoordinates = tweets.filter(compose(is(Object), get('geo')))
-                            .map(compose(get('coordinates'), get('coordinates')));
-
-withCoordinates
-  .subscribe(map(compose(unshift('.map-container'), apply(dot))));
+locate(tweets);
