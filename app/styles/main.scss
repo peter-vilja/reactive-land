@@ -47,7 +47,85 @@ div[role="main"] {
   position: absolute;
   height: 2px;
   width: 2px;
-  background: red;
+  background: #f79e34;
+  &::before, &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -17px 0 0 -17px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    content: '';
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &::before, &::after {
+    box-shadow: 0 0 0 2px rgba(#f79e34, 0.7);
+  }
+
+  &::before {
+    -webkit-animation: wave-1 0.5s forwards;
+  	animation: wave-1 0.5s forwards;
+  }
+
+  &::after {
+    -webkit-animation: wave-2 0.5s forwards;
+    animation: wave-2 0.5s forwards;
+  }
+}
+
+@-webkit-keyframes wave-1 {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.5, 0.5, 1);
+    transform: scale3d(0.5, 0.5, 1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes wave-1 {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.5, 0.5, 1);
+    transform: scale3d(0.5, 0.5, 1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale3d(1.1, 1.1, 1);
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@-webkit-keyframes wave-2 {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.5, 0.5, 1);
+    transform: scale3d(0.5, 0.5, 1);
+  }
+  50%, 100% {
+    opacity: 0;
+    -webkit-transform: scale3d(1.2, 1.2, 1);
+    transform: scale3d(1.2, 1.2, 1);
+  }
+}
+
+@keyframes wave-2 {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.5, 0.5, 1);
+    transform: scale3d(0.5, 0.5, 1);
+  }
+  50%, 100% {
+    opacity: 0;
+    -webkit-transform: scale3d(1.2, 1.2, 1);
+    transform: scale3d(1.2, 1.2, 1);
+  }
 }
 
 .grid {
