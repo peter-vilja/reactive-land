@@ -9,8 +9,9 @@ import {EventStream, Behavior} from 'reactive';
 import {diff, patch, h, create} from 'virtual-dom';
 import {fetch, log, select, unshift} from './general';
 // import './keywords';
-import './top';
+import top from './top';
 import locate from './map';
+import randTweets from './tweets';
 
 let counter = amount => h('div', {className: 'tweet-count'}, String(amount));
 
@@ -31,3 +32,5 @@ tweets
   .subscribe(compose(render.next.bind(render), counter));
 
 locate(tweets);
+randTweets(tweets);
+top(tweets);
