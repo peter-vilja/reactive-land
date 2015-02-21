@@ -7,7 +7,7 @@ import Future from 'data.future';
 import Maybe from 'data.maybe';
 import {EventStream, Behavior} from 'reactive';
 import {diff, patch, h, create} from 'virtual-dom';
-import {fetch, log, select, unshift} from './general';
+import {fetch, log, unshift} from './general';
 // import './keywords';
 import top from './top';
 import locate from './map';

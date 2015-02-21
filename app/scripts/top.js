@@ -1,7 +1,7 @@
 'use strict';
-import {EventStream, Behavior} from 'reactive';
+import {Behavior} from 'reactive';
 import {diff, patch, h, create} from 'virtual-dom';
-import {fetch, log, select, unshift} from './general';
+import {fetch, log, unshift} from './general';
 
 let tags = {};
 let top = [];
