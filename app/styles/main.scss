@@ -55,9 +55,43 @@ div[role="main"] {
 
 .dot {
   position: absolute;
-  height: 2px;
-  width: 2px;
-  background: #f79e34;
+  height: 6px;
+  width: 6px;
+  cursor: pointer;
+  &.closed {
+    .content { display: none !important; }
+  }
+  .mark {
+    height: 2px;
+    width: 2px;
+    margin: 2px 0 0 2px;
+    background: #f79e34;
+  }
+  .content {
+    background-color: #eee;
+    width: 300px;
+    font-size: .8em;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    margin-left: 5px;
+    z-index: 100;
+    position: relative;
+    .profile-image {
+      float: left;
+      width: 30px;
+      height: 30px;
+      border-radius: 15px;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .text {
+      float: left;
+      margin-left: 5px;
+      width: 248px;
+    }
+  }
+
   &::before, &::after {
     position: absolute;
     top: 50%;
