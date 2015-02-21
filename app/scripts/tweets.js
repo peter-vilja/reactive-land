@@ -29,8 +29,8 @@ export default tweets => {
     .map(content)
     .map(item)
     .subscribe(({value}) => {
-      if (show.length === 5) show.shift();
-      show.push(value);
+      if (show.length === 5) show.pop();
+      show.unshift(value);
       render.next(tweetList(show));
     });
 };
