@@ -3,7 +3,7 @@
 import pf from 'pointfree-fantasy';
 import {Behavior} from 'reactive';
 import {diff, patch, h, create} from 'virtual-dom';
-import {unshift, log} from './general';
+import {prepend, log} from './general';
 
 var dom = counters => h('div.counters.row', [
   h('div.column-1-3.new', [
@@ -22,7 +22,7 @@ var dom = counters => h('div.counters.row', [
 
 let initial = dom({newCount: 0, deletedCount: 0, retweetedCount: 0});
 let rootNode = create(initial);
-unshift('.metrics', rootNode);
+prepend('.metrics', rootNode);
 
 var render = Behavior.of(initial)
 render.bufferWithCount(2, 1).subscribe(([old, updated]) => {

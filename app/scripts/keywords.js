@@ -1,7 +1,7 @@
 'use strict';
 import {EventStream, Behavior} from 'reactive';
 import {diff, patch, h, create} from 'virtual-dom';
-import {fetch, log, select, unshift, rand} from './general';
+import {fetch, log, select, prepend, rand} from './general';
 
 let words = ['happy', 'joyful', 'excited', 'relaxed', 'awesome', 'sad', 'depressed', 'bored', 'angry', 'hurt'];
 
@@ -19,7 +19,7 @@ let render = feeling => words.map(word => createFeeling(word, word === feeling))
 
 let tree = createList(render());
 let tags = create(tree);
-unshift('.feeling', tags);
+prepend('.feeling', tags);
 
 let renderFeeling = compose(update, render);
 

@@ -1,7 +1,7 @@
 'use strict';
 import {Behavior} from 'reactive';
 import {diff, patch, h, create} from 'virtual-dom';
-import {fetch, log, unshift} from './general';
+import {fetch, log, prepend} from './general';
 
 let tags = {};
 let top = [];
@@ -11,7 +11,7 @@ let item = tag => h('li', {}, `${tag.tag} ${tag.amount}`);
 
 let tree = top10([]);
 let rootNode = create(tree);
-unshift('.top', rootNode);
+prepend('.top', rootNode);
 
 let render = Behavior.of(tree);
 

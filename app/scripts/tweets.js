@@ -1,7 +1,7 @@
 'use strict';
 import {Behavior} from 'reactive';
 import {diff, patch, h, create} from 'virtual-dom';
-import {fetch, log, unshift} from './general';
+import {fetch, log, prepend} from './general';
 
 var show = [];
 
@@ -14,7 +14,7 @@ let content = tweet => [
 
 let tree = tweetList([]);
 let rootNode = create(tree);
-unshift('.tweets', rootNode);
+prepend('.tweets', rootNode);
 
 let render = Behavior.of(tree);
 

@@ -1,7 +1,7 @@
 'use strict';
 import {EventStream} from 'reactive';
 import {h, create} from 'virtual-dom';
-import {unshift, select, log} from './general';
+import {prepend, select, log} from './general';
 
 const MAP_WIDTH = 855.546875;
 const MAP_HEIGHT = 432.828125;
@@ -46,5 +46,5 @@ mapClicks
 export default tweets => {
   tweets
     .filter(compose(is(Object), get('coordinates')))
-    .subscribe(map(compose(unshift('.map-container'), dot)));
+    .subscribe(map(compose(prepend('.map-container'), dot)));
 };
