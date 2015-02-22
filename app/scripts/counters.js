@@ -3,26 +3,26 @@
 import pf from 'pointfree-fantasy';
 import {Behavior} from 'reactive';
 import {diff, patch, h, create} from 'virtual-dom';
-import {prepend, log} from './general';
+import {prepend, append, log} from './general';
 
-var dom = counters => h('div.counters.row', [
-  h('div.column-1-3.new', [
-    h('div.newCount', String(counters.newCount)),
-    h('div', 'New tweets')
+var dom = counters => h('div.counters.column-2-3.row', [
+  h('div.column-1-3.counter.new', [
+    h('div.tweet-count', String(counters.newCount)),
+    h('div.label', 'New tweets')
   ]),
-  h('div.column-1-3.deleted', [
-    h('div.deletedCount', String(counters.deletedCount)),
-    h('div', 'Deleted tweets')
+  h('div.column-1-3.counter.deleted', [
+    h('div.tweet-count', String(counters.deletedCount)),
+    h('div.label', 'Deleted tweets')
   ]),
-  h('div.column-1-3.retweeted', [
-    h('div.retweetedCount', String(counters.retweetedCount)),
-    h('div', 'Retweeted tweets')
+  h('div.column-1-3.counter.retweeted', [
+    h('div.tweet-count', String(counters.retweetedCount)),
+    h('div.label', 'Retweeted tweets')
   ])
 ]);
 
 let initial = dom({newCount: 0, deletedCount: 0, retweetedCount: 0});
 let rootNode = create(initial);
-prepend('.metrics', rootNode);
+append('.counters-wrapper', rootNode);
 
 var render = Behavior.of(initial)
 render.bufferWithCount(2, 1).subscribe(([old, updated]) => {

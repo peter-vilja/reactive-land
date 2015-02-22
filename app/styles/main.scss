@@ -4,7 +4,7 @@ html {
   color: #222;
   font-size: .9em;
   line-height: 1.4;
-  font-family: 'Raleway', Arial, sans-serif;
+  font-family: 'Lato', sans-serif;
   @include bp(tablet) {
     font-size: 1em;
   }
@@ -12,10 +12,8 @@ html {
 
 html, body {
   width: 100%;
-  height: 100%;
   padding: 0;
   margin: 0;
-  font-family: 'Raleway';
 }
 
 body {
@@ -24,9 +22,6 @@ body {
   background-size: cover;
   filter: blur(5px);
   display: flex;
-  width: 100%;
-  min-height: 100%;
-  // overflow: hidden;
 }
 
 .cf:before,
@@ -39,12 +34,15 @@ body {
   clear: both;
 }
 
+@import 'colors';
 @import "grid";
 @import "feeling";
 
 div[role="main"] {
   background: #43464F;
   width: 85%;
+  border-radius: 5px;
+  margin: 3em 0;
   box-shadow: 2px 5px 10px rgba(#000, .2);
 }
 
@@ -176,10 +174,6 @@ div[role="main"] {
   position: relative;
   border-radius: 5px;
   color: #fafafa;
-  height: 500px;
-  .row {
-    height: 50%;
-  }
   .column {
     padding: 2em;
   }
@@ -199,24 +193,73 @@ div[role="main"] {
   }*/
 }
 
-.metrics {
+.counters {
   @extend %center;
-  .tweet-count {
-    font-size: 3em;
+  padding: 0 !important;
+  .counter {
+    padding-top: 0;
+    text-align: center;
   }
-  label {
-    font-size: 1.2em;
+  .label {
+    color: $grey;
   }
 }
 
-.top {
+.tweet-count {
+  font-size: 2.5em;
+  .new & {
+    color: $green;
+  }
+  .deleted & {
+    color: $red;
+  }
+  .retweeted & {
+    color: $lightgreen;
+  }
+}
+
+.top-hashtags, .random-tweets {
+  padding-top: 1em !important;
+  h2 {
+    text-transform: uppercase;
+    font-size: 1em;
+    color: $grey;
+    text-align: center;
+  }
+}
+
+.top-hashtags {
   ul {
+    @extend %reset;
     list-style-type: decimal;
+    color: $grey;
+    padding: 0 3em;
+  }
+  li {
+    position: relative;
+    padding: 0.3em 0;
+  }
+  .hashtag {
+    background: #5a5a5a;
+    border-radius: 3px;
+    padding: .2em .6em;
+    a {
+      color: #038cd8;
+      &::before {
+        content: '#';
+      }
+    }
+  }
+  .hashtag-amount {
+    position: absolute;
+    right: -1em;
+    color: $lightgreen;
   }
 }
 
-.tweets {
+.random-tweets {
   ul {
+    @extend %reset;
     list-style-type: none;
     li {
       margin: 5px 0;
@@ -226,7 +269,7 @@ div[role="main"] {
         float: left;
         width: 50px;
         height: 50px;
-        border-radius: 25px;
+        border-radius: 50%;
         background-repeat: no-repeat;
         background-size: cover;
       }
@@ -236,6 +279,10 @@ div[role="main"] {
         width: 500px;
         .timeAndUser {
           font-size: .8em;
+          color: $grey;
+        }
+        .user::before {
+          content: '@';
         }
       }
     }

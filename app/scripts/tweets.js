@@ -1,7 +1,7 @@
 'use strict';
 import {Behavior} from 'reactive';
 import {diff, patch, h, create} from 'virtual-dom';
-import {fetch, log, prepend} from './general';
+import {fetch, log, append} from './general';
 
 let formatTime = time => new Date(time).toLocaleDateString('en-US', {hour: '2-digit', minute: '2-digit', hour12: false});
 let show = [];
@@ -12,8 +12,8 @@ let content = tweet => [
   h('div', {className: 'profile-image', style: {'background-image': 'url(' + tweet.user.profile_image_url + ')'}}),
   h('div', {className: 'details'}, [
     h('div', {className: 'timeAndUser'}, [
-      h('span', {className: 'time'}, formatTime(tweet.created_at) + ': '),
-      h('span', {className: 'user'}, tweet.user.name)
+      h('span', {className: 'user'}, `${tweet.user.name}  ·  `),
+      h('span', {className: 'time'}, `${formatTime(tweet.created_at)}`)
     ]),
     h('span', {className: 'text'}, tweet.text)
   ])
@@ -21,7 +21,7 @@ let content = tweet => [
 
 let tree = tweetList([]);
 let rootNode = create(tree);
-prepend('.tweets', rootNode);
+append('.random-tweets', rootNode);
 
 let render = Behavior.of(tree);
 

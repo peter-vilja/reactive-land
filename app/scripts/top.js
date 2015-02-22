@@ -1,17 +1,22 @@
 'use strict';
 import {Behavior} from 'reactive';
 import {diff, patch, h, create} from 'virtual-dom';
-import {fetch, log, prepend} from './general';
+import {fetch, log, append} from './general';
 
 let tags = {};
 let top = [];
 
 let top10 = list => h('ul', {className: 'top10'}, list);
-let item = tag => h('li', {}, `${tag.tag} ${tag.amount}`);
+let item = tag => h('li', [
+  h('span.hashtag', [
+    h('a', {href: `https://twitter.com/hashtag/${tag.tag}`, target: '_blank'}, `${tag.tag}`)
+  ]),
+  h('span.hashtag-amount', `${tag.amount}`)
+]);
 
 let tree = top10([]);
 let rootNode = create(tree);
-prepend('.top', rootNode);
+append('.top-hashtags', rootNode);
 
 let render = Behavior.of(tree);
 
