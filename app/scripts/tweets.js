@@ -3,13 +3,20 @@ import {Behavior} from 'reactive';
 import {diff, patch, h, create} from 'virtual-dom';
 import {fetch, log, prepend} from './general';
 
-var show = [];
+let formatTime = time => new Date(time).toLocaleDateString('en-US', {hour: '2-digit', minute: '2-digit', hour12: false});
+let show = [];
 
 let tweetList = list => h('ul', {}, list);
 let item = content => h('li', {className: 'cf'}, content);
 let content = tweet => [
   h('div', {className: 'profile-image', style: {'background-image': 'url(' + tweet.user.profile_image_url + ')'}}),
-  h('span', {className: 'text'}, tweet.text)
+  h('div', {className: 'details'}, [
+    h('div', {className: 'timeAndUser'}, [
+      h('span', {className: 'time'}, formatTime(tweet.created_at) + ': '),
+      h('span', {className: 'user'}, tweet.user.name)
+    ]),
+    h('span', {className: 'text'}, tweet.text)
+  ])
 ];
 
 let tree = tweetList([]);
@@ -26,8 +33,7 @@ export default tweets => {
   tweets
     .filter(get('text'))
     .throttle(5000)
-    .map(content)
-    .map(item)
+    .map(compose(item, content))
     .subscribe(({value}) => {
       if (show.length === 5) show.pop();
       show.unshift(value);
