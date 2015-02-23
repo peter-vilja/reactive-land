@@ -288,3 +288,18 @@ div[role="main"] {
     }
   }
 }
+
+.random-photos {
+  margin: 0 auto;
+  padding: 2em;
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    .photo {
+      width: 200px;
+      height: auto;
+    }
+  }
+}
