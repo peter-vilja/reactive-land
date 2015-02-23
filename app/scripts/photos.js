@@ -8,7 +8,7 @@ let show = [];
 let photoList = list => h('ul', {}, list);
 let item = content => h('li', {}, content);
 let content = tweet => [
-  h('img', {className: 'photo', src: tweet.extended_entities.media[0].media_url})
+  h('div', {className: 'photo', style: {'background-image': 'url(' + tweet.extended_entities.media[0].media_url + ')'}})
 ];
 
 let tree = photoList([]);

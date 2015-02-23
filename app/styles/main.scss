@@ -297,9 +297,13 @@ div[role="main"] {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    padding: 0;
     .photo {
       width: 200px;
-      height: auto;
+      height: 300px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: top center;
     }
   }
 }
