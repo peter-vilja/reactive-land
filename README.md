@@ -1,10 +1,10 @@
-# Reactive-app
+# reactive-land
 
 An application to showcase FRP's benefits
 
 ### Install
 
-```$ npm install ```
+```$ npm install```
 
 ### Compile
 
