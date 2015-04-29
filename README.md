@@ -4,7 +4,7 @@ An application to showcase FRP's benefits
 
 ### Install
 
-```sh $ npm install ```
+```$ npm install ```
 
 ### Compile
 
