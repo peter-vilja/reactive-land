@@ -28,7 +28,7 @@ export default tweets => {
     .filter(compose(eq('photo'), get('type'), head, get('media'), get('extended_entities')))
     .filter(compose(is(Object), get('coordinates')))
     .throttle(5000)
-    .map(compose(item, content, log))
+    .map(compose(item, content))
     .subscribe(({value}) => {
       if (show.length === 5) show.pop();
       show.unshift(value);
